@@ -25,14 +25,20 @@ public class ProductosServiceImpl implements ProductosService{
     }
 
     @Override
+    public void modificarProducto(Productos producto) {
+
+    }
+
+    @Override
     public void eliminarProducto(Productos producto) {
 
     }
 
     @Override
-    public void editarProducto(Productos producto) {
-
+    public Productos buscarProducto(int codigoProducto) {
+        return productosRepository.findByCodigoProducto(codigoProducto);
     }
+
 
 
 }

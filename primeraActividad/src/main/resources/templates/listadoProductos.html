@@ -42,7 +42,11 @@
         </div>
     </div>
 </div>
-<button type="button">volver</button>
-<button type="button">Agregar</button>
+<form th:action="@{/agregar}" method="post">
+    <button  type="submit"  >agregar</button>
+</form>
+<form th:action="@{/volver}" method="post">
+    <button  type="submit"  >volver</button>
+</form>
 </body>
 </html>

@@ -16,6 +16,9 @@ public class ServiciosController {
     @GetMapping("/listaServicios")
     public String listaProductos(Model model){
 
+        var listaServicios = serviciosService.recuperarListaServicios();
+        model.addAttribute("listaServicios",listaServicios);
+
         return "listadoServicios";
     }
 
@@ -23,18 +26,6 @@ public class ServiciosController {
     public String irEditarAgregarServicio(Model model){
 
         return "redirect:/editarAgregarServicio";
-    }
-
-    @PostMapping("/listaServicios")
-    public String elimnarServicio(Model model){
-
-        return "listadoServicios";
-    }
-
-    @PostMapping("/listaServicios")
-    public String volver(){
-
-        return "redirect:/menu";
     }
 
     @GetMapping("/editarAgregarServicio")
@@ -47,6 +38,19 @@ public class ServiciosController {
     public String guardarCambios(){
 
         return "redirect:/listaServicios";
+    }
+
+
+    @PostMapping("/listaServicios/eliminar")
+    public String elimnarServicio(Model model){
+
+        return "listadoServicios";
+    }
+
+    @PostMapping("/listaServicios/volver")
+    public String volver(){
+
+        return "redirect:/menu";
     }
 
 

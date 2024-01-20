@@ -24,12 +24,19 @@ public class ServiciosServiceImpl implements ServiciosService{
     }
 
     @Override
+    public void modificarServicio(Servicios producto) {
+
+    }
+
+    @Override
     public void eliminarPServicio(Servicios producto) {
 
     }
 
     @Override
-    public void editarServicio(Servicios producto) {
+    public Servicios buscarServicio(int codigoServicio) {
+        return serviciosRepository.findByCodigoServicio(codigoServicio);
 
     }
+
 }

@@ -10,9 +10,10 @@ public interface ServiciosService {
 
     public void agregarServicio(Servicios producto);
 
+    public void modificarServicio(Servicios producto);
+
     public void eliminarPServicio(Servicios producto);
 
-    public void editarServicio(Servicios producto);
-
+    public Servicios buscarServicio(int codigoServicio);
 
 }
