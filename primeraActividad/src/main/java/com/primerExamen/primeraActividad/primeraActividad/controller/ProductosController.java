@@ -22,6 +22,16 @@ public class ProductosController {
 
         return "redirect:/editarAgregarProducto";
     }
+    @PostMapping("/listaProductos")
+    public String eliminarProducto(Model model){
+
+        return "listadoProductos";
+    }
+    @PostMapping("/listaProductos")
+    public String volver(){
+
+        return "redirect:/menu";
+    }
 
     @GetMapping("/editarAgregarProducto")
     public String editarAgregarProducto(Model model){

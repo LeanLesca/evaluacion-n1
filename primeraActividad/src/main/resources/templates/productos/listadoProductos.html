@@ -32,8 +32,8 @@
                     <td th:text="${producto.descripcion}"> descripcion</td>
                     <td th:text="${producto.precio}"> precio</td>
                     <td th:text="${producto.stock}"> stocks</td>
-                    <td><a th:href="@{/editar/} + ${producto.codigoProducto}" th:text = "editar"/></td>
-                    <td><a th:href="@{/eliminar/} + ${producto.codigoProducto}" th:text = "eliminar"/></td>
+                    <td><button th:href="@{/editar/} + ${producto.codigoProducto}" th:text = "editar">editar</button></td>
+                    <td><button th:href="@{/eliminar/} + ${producto.codigoProducto}" th:text = "eliminar">eliminar</button></td>
 
                 </tr>
                 </tbody>
@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-
+<button type="button">volver</button>
 <button type="button">Agregar</button>
 </body>
 </html>
