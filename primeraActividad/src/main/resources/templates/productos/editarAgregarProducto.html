@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form th:action="@{/guardar/}" metod = "post" th:object="${Productos}">
+        <label >codigoEanProducto:</label>
+        <input type="hidden" name="codigoProducto" th:field="*{codigoProducto}"/>
+        <br/>
+        <label >codigoEanProducto:</label>
+        <input type="hidden" name="codigoEanProducto" th:field="*{codigoEanProducto}"/>
+        <br/>
+        <label >nombre:</label>
+        <input type="hidden" name="nombre" th:field="*{nombre}"/>
+        <br/>
+        <label >descripcion:</label>
+        <input type="hidden" name="descripcion" th:field="*{descripcion}"/>
+        <br/>
+        <label >precio:</label>
+        <input type="hidden" name="precio" th:field="*{precio}"/>
+        <br/>
+        <label >stock:</label>
+        <input type="hidden" name="stock" th:field="*{stock}"/>
+        <input type="submit" name="guardar" value="Guardar"/>
+
+    </form>
+
+</body>
+</html>
