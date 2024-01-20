@@ -6,24 +6,35 @@
 </head>
 <body>
 
-<div class="container" th:if="${listaUsuarios != null and !listaUsuarios.empty}">
+<div class="container" th:if="${listaProductos != null and !listaProductos.empty}">
     <div class="items">
         <div class="items-head" >
-            <h1 th:text="${titulo}"> Título predeterminado </h1>
+            <h1 th:text="${tituloProducto}"> Título predeterminado </h1>
             <hr>
         </div>
         <div  class="items-body">
-            <table class="styled-table">
+            <table class="styled-table" border = "1">
                 <thead>
                 <tr>
-                    <th>Pais</th>
-                    <th>Cantidad de Copas</th>
+                    <th>codigoProducto</th>
+                    <th>codigoEanProducto</th>
+                    <th>nombre</th>
+                    <th>descripcion</th>
+                    <th>precio</th>
+                    <th>stock</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="entry: ${paises} ">
-                    <td th:text="${entry.key}"> placeholder pais</td>
-                    <td th:text="${entry.value}"> placeholder copas</td>
+                <tr th:each="producto: ${listaProductos} ">
+                    <td th:text="${producto.codigoProducto}"> codigoProducto</td>
+                    <td th:text="${producto.codigoEanProducto}"> codigoEanProducto</td>
+                    <td th:text="${producto.nombre}"> nombre</td>
+                    <td th:text="${producto.descripcion}"> descripcion</td>
+                    <td th:text="${producto.precio}"> precio</td>
+                    <td th:text="${producto.stock}"> stocks</td>
+                    <td><a th:href="@{/editar/} + ${producto.codigoProducto}" th:text = "editar"/></td>
+                    <td><a th:href="@{/eliminar/} + ${producto.codigoProducto}" th:text = "eliminar"/></td>
+
                 </tr>
                 </tbody>
 
@@ -31,5 +42,7 @@
         </div>
     </div>
 </div>
+
+<button type="button">Agregar</button>
 </body>
 </html>

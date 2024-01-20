@@ -6,24 +6,34 @@
 </head>
 <body>
 
-<div class="container" th:if="${listaUsuarios != null and !listaUsuarios.empty}">
+<div class="container" th:if="${listaServicios != null and !listaServicios.empty}">
     <div class="items">
-        <div class="items-head">
-            <h1 th:text="${titulo}"> Título predeterminado </h1>
+        <div class="items-head" >
+            <h1 th:text="${tituloServicio}"> Título predeterminado </h1>
             <hr>
         </div>
         <div  class="items-body">
-            <table class="styled-table">
+            <table class="styled-table" border = "1">
                 <thead>
                 <tr>
-                    <th>Pais</th>
-                    <th>Cantidad de Copas</th>
+                    <th>codigoServicio</th>
+                    <th>codigoEanServicio</th>
+                    <th>nombre</th>
+                    <th>precio</th>
+                    <th>duracion</th>
+
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="entry: ${paises} ">
-                    <td th:text="${entry.key}"> placeholder pais</td>
-                    <td th:text="${entry.value}"> placeholder copas</td>
+                <tr th:each="servicio: ${listaServicios} ">
+                    <td th:text="${servicio.codigoServicio}"> codigoServicio</td>
+                    <td th:text="${servicio.codigoEanServicio}"> codigoEanServicio</td>
+                    <td th:text="${servicio.nombre}"> nombre</td>
+                    <td th:text="${servicio.precio}"> precio</td>
+                    <td th:text="${servicio.duracion}"> duracion</td>
+                    <td><a th:href="@{/editar/} + ${servicio.codigoServicio}" th:text = "editar"/></td>
+                    <td><a th:href="@{/eliminar/} + ${servicio.codigoServicio}" th:text = "eliminar"/></td>
+
                 </tr>
                 </tbody>
 
@@ -31,5 +41,7 @@
         </div>
     </div>
 </div>
+
+<button type="button">Agregar</button>
 </body>
 </html>
