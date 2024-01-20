@@ -38,18 +38,19 @@ public class ProductosController {
     @GetMapping("/editarAgregarProducto")
     public String editarAgregarProducto(Model model){
         int codigoProducto = codigoProd;
+        Productos producto;
         if(codigoProducto == -1){
-            Productos prodNuevo = new Productos();
+             producto = new Productos();
             isNuevo = true;
         }else{
-            Productos producto = productosService.buscarProducto(codigoProducto);
+             producto = productosService.buscarProducto(codigoProducto);
             isNuevo = false;
         }
-
+        model.addAttribute("producto",producto);
         return "editarAgregarProducto";
     }
 
-    @PostMapping("/editarAgregarProducto")
+    @PostMapping("/guardarCambios")
     public String guardarCambios(@RequestParam Productos producto){
 
         if(isNuevo){

@@ -12,7 +12,7 @@ public interface ServiciosService {
 
     public void modificarServicio(Servicios producto);
 
-    public void eliminarPServicio(Servicios producto);
+    public void eliminarServicio(Servicios producto);
 
     public Servicios buscarServicio(int codigoServicio);
 

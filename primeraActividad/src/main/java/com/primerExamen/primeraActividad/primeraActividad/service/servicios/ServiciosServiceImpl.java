@@ -29,7 +29,7 @@ public class ServiciosServiceImpl implements ServiciosService{
     }
 
     @Override
-    public void eliminarPServicio(Servicios producto) {
+    public void eliminarServicio(Servicios servicio) {
 
     }
 

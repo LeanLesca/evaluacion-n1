@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <form th:action="@{/guardar}" metod = "post" th:object="${Productos}">
+    <form th:action="@{/guardarCambios}" metod = "post" th:object="${Productos}">
         <label >codigoEanProducto:</label>
         <input type="hidden" name="codigoProducto" th:field="*{codigoProducto}"/>
         <br/>
