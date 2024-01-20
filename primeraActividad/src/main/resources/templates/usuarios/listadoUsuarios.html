@@ -1,0 +1,35 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ejercicio 2 con Thymeleaf</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container" th:if="${listaUsuarios != null and !listaUsuarios.empty}">
+    <div class="items">
+        <div class="items-head">
+            <h1 th:text="${titulo}"> Título predeterminado </h1>
+            <hr>
+        </div>
+        <div  class="items-body">
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>Pais</th>
+                    <th>Cantidad de Copas</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="entry: ${paises} ">
+                    <td th:text="${entry.key}"> placeholder pais</td>
+                    <td th:text="${entry.value}"> placeholder copas</td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

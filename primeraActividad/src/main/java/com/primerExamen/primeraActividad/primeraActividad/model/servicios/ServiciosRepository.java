@@ -1,4 +1,6 @@
 package com.primerExamen.primeraActividad.primeraActividad.model.servicios;
 
-public interface ServiciosRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface ServiciosRepository extends CrudRepository<Servicios,Integer> {
 }

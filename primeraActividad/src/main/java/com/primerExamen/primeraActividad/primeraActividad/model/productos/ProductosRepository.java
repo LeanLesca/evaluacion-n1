@@ -1,4 +1,6 @@
 package com.primerExamen.primeraActividad.primeraActividad.model.productos;
 
-public interface ProductosRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface ProductosRepository extends CrudRepository<Productos,Integer> {
 }
