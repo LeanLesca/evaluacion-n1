@@ -2,38 +2,48 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Creacion y Edicion de Servicios</title>
+    <link rel="stylesheet" th:href="@{/form.css}">
 </head>
 <body>
-<h1>servicio</h1>
-<form th:action="@{/guardarCambios}" method = "post" th:object="${servicio}">
-    <!--
-    <label >idServicio:</label>
-    -->
-    <input type="text" name="idServicio" th:field="*{idServicio}" style="display: none;" required/>
-    <br/>
-    <label >codigoEan:</label>
-    <input type="number" name="codigoEan" th:field="*{codigoEan}" required/>
-    <br/>
-    <label >nombre:</label>
-    <input type="text" name="nombre" th:field="*{nombre}" required/>
-    <br/>
-    <label >descripcion:</label>
-    <input type="text" name="descripcion" th:field="*{descripcion}" required/>
-    <br/>
-    <label >precio:</label>
-    <input type="number" name="precio" th:field="*{precio}" required/>
-    <br/>
-    <label >duracion:</label>
-    <input type="number" name="stock" th:field="*{duracion}" required/>
-    <br/>
-    <input type="submit" name="guardar" value="Guardar"/>
-
-</form>
-<form th:action="@{/cancel}" method="post">
-    <button  type="submit"  >cancelar</button>
-
-</form>
+<div class="container">
+    <div id="list-wrap">
+        <h2>Ingrese o actualice los datos de servicios</h2>
+        <hr>
+        <div class="items-body">
+            <form th:action="@{/guardarCambios}" method = "post" th:object="${servicio}">
+                <!--
+                <label >idServicio:</label>
+                -->
+                <input type="text" name="idServicio" th:field="*{idServicio}" style="display: none;" required/>
+                <br/>
+                <div class="form-group">
+                    <label >codigoEan:</label>
+                    <input type="number" name="codigoEan" th:field="*{codigoEan}" required/>
+                </div>
+                <div class="form-group">
+                    <label >nombre:</label>
+                    <input type="text" name="nombre" th:field="*{nombre}" required/>
+                </div>
+                <div class="form-group">
+                    <label >descripcion:</label>
+                    <input type="text" name="descripcion" th:field="*{descripcion}" required/>
+                </div>
+                <div class="form-group">
+                    <label >precio:</label>
+                    <input type="number" name="precio" th:field="*{precio}" required/>
+                </div>
+                <div class="form-group">
+                    <label >duracion:</label>
+                    <input type="number" name="stock" th:field="*{duracion}" required/>
+                </div>
+                <br>
+                <input class="create_button" type="submit" name="guardar" value="Guardar"/>
+                <a class="cancelar" th:href="@{/listaServicios}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

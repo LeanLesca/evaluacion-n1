@@ -1,17 +1,17 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="tablas.css">
     <title>Ejercicio 2 con Thymeleaf</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h1 th:text="${tituloServicio}"> Título predeterminado </h1>
 <hr>
 <div class="container" th:if="${listaServicios != null and !listaServicios.empty}">
-    <div class="items">
-        <div class="items-head" >
-
-        </div>
+    <div id="list-wrap">
+        <h2 th:text="${tituloServicio}"></h2>
+        <hr>
         <div  class="items-body">
             <table class="styled-table" border = "1">
                 <thead>
@@ -40,14 +40,16 @@
                 </tbody>
 
             </table>
+            <form th:action="@{/nuevo}" method="post">
+                <button  id="create_button"  type="submit"  >agregar</button>
+            </form>
+            <form th:action="@{/volver}" method="post">
+                <button id="volver" type="submit"  >volver</button>
+            </form>
         </div>
     </div>
 </div>
-<form th:action="@{/nuevo}" method="post">
-    <button  type="submit"  >agregar</button>
-</form>
-<form th:action="@{/volver}" method="post">
-    <button  type="submit"  >volver</button>
+
 </form>
 </body>
 </html>

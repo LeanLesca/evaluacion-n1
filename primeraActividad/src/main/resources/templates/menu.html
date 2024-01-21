@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="menu.css">
 </head>
-<body>
-    <h1>Bienvenido</h1>
-    <form th:action="@{/servicios}" method="post">
+    <body>
+        <div id="select-menu-wrap">
+            <h2>Bienvenido</h2>
 
-    <button  type="submit"  >ver servicios</button>
-    </form>
-    <form th:action="@{/productos}" method="post">
-        <button  type="submit"  >ver productos</button>
+            <form th:action="@{/servicios}" method="post">
+                <button  type="submit"  >ver servicios</button>
+            </form>
 
-    </form>
-</body>
+            <form th:action="@{/productos}" method="post">
+                <button  type="submit"  >ver productos</button>
+            </form>
+        </div>
+    </body>
 </html>
