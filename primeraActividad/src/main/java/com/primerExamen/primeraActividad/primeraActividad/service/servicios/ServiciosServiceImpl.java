@@ -15,22 +15,18 @@ public class ServiciosServiceImpl implements ServiciosService{
 
     @Override
     public List<Servicios> recuperarListaServicios() {
-        return null;
+
+        return (List<Servicios>)serviciosRepository.findAll() ;
     }
 
     @Override
-    public void agregarServicio(Servicios producto) {
-
-    }
-
-    @Override
-    public void modificarServicio(Servicios producto) {
-
+    public void guardarServicio(Servicios servicio) {
+        serviciosRepository.save(servicio);
     }
 
     @Override
     public void eliminarServicio(Servicios servicio) {
-
+        serviciosRepository.delete(servicio);
     }
 
     @Override

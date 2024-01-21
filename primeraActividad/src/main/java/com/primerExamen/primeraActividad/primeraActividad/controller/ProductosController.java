@@ -50,15 +50,12 @@ public class ProductosController {
         return "editarAgregarProducto";
     }
 
-    @PostMapping("/guardarCambios")
+    @PostMapping("/editarAgregarProducto")
     public String guardarCambios(@RequestParam Productos producto){
+        System.out.println("pase por aca");
 
-        if(isNuevo){
-            productosService.agregarProducto(producto);
-            isNuevo = false;
-        }else{
-            productosService.modificarProducto(producto);
-        }
+        productosService.guardarProducto(producto);
+
         return "redirect:/listaProductos";
     }
 
@@ -74,6 +71,12 @@ public class ProductosController {
     public String volver(){
 
         return "redirect:/menu";
+    }
+
+    @PostMapping("/cancelar")
+    public String cancelar(){
+
+        return "redirect:/listaProductos";
     }
 
 

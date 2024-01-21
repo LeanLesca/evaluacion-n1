@@ -5,23 +5,28 @@
     <title>Title</title>
 </head>
 <body>
-
-<form th:action="@{/guardarCambios}" metod = "post" th:object="${Servicios}">
-    <label >codigoEanProducto:</label>
-    <input type="hidden" name="codigoServicio" th:field="*{codigoServicio}"/>
+<h1>servicio</h1>
+<form th:action="@{/guardarCambios}" method = "post" th:object="${servicio}">
+    <label >codigoProducto:</label>
+    <input type="text" name="codigoServicio" th:field="*{codigoServicio}"/>
     <br/>
     <label >codigoEanProducto:</label>
-    <input type="hidden" name="codigoEanServicio" th:field="*{codigoEanServicio}"/>
+    <input type="text" name="codigoEanServicio" th:field="*{codigoEanServicio}"/>
     <br/>
     <label >nombre:</label>
-    <input type="hidden" name="nombre" th:field="*{nombre}"/>
+    <input type="text" name="nombre" th:field="*{nombre}"/>
     <br/>
     <label >precio:</label>
-    <input type="hidden" name="precio" th:field="*{precio}"/>
+    <input type="text" name="precio" th:field="*{precio}"/>
     <br/>
     <label >stock:</label>
-    <input type="hidden" name="stock" th:field="*{duracion}"/>
+    <input type="text" name="stock" th:field="*{duracion}"/>
+    <br/>
     <input type="submit" name="guardar" value="Guardar"/>
+
+</form>
+<form th:action="@{/cancel}" method="post">
+    <button  type="submit"  >cancelar</button>
 
 </form>
 

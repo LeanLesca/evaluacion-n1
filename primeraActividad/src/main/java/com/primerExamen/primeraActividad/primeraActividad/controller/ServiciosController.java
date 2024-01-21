@@ -30,52 +30,53 @@ public class ServiciosController {
         return "listadoServicios";
     }
 
-    @PostMapping("/agregar")
-    public String irEditarAgregarProducto(Model model) {
+    @PostMapping("/nuevo")
+    public String irEditarAgregarServicio(Model model) {
         codigoServ = -1;
-        return "redirect:/editarAgregarProducto";
+        return "redirect:/editarAgregarServicio";
     }
 
-    @GetMapping("/editarAgregarProducto")
-    public String editarAgregarProducto(Model model) {
-        int codigoProducto = codigoServ;
+    @GetMapping("/editarAgregarServicio")
+    public String editarAgregarServicio(Model model) {
+        int codigoServicio = codigoServ;
         Servicios servicio;
-        if (codigoProducto == -1) {
+        if (codigoServicio == -1) {
              servicio = new Servicios();
             isNuevo = true;
         } else {
-            servicio = serviciosService.buscarServicio(codigoProducto);
+            servicio = serviciosService.buscarServicio(codigoServicio);
             isNuevo = false;
         }
         model.addAttribute("servicio",servicio);
 
-        return "editarAgregarProducto";
+        return "editarAgregarServicio";
     }
 
     @PostMapping("/guardarCambios")
     public String guardarCambios(@RequestParam Servicios servicio) {
+            serviciosService.guardarServicio(servicio);
 
-        if (isNuevo) {
-            serviciosService.agregarServicio(servicio);
-            isNuevo = false;
-        } else {
-            serviciosService.modificarServicio(servicio);
-        }
-        return "redirect:/listaProductos";
+        return "redirect:/listaServicios";
     }
 
-    @PostMapping("/eliminar")
+    @PostMapping("/delete")
     public String eliminarProducto(Model model, @RequestParam int codigoServicio) {
 
         Servicios servicioEliminar = serviciosService.buscarServicio(codigoServicio);
         serviciosService.eliminarServicio(servicioEliminar);
 
-        return "listadoProductos";
+        return "listadoServicios";
     }
 
-    @PostMapping("/volver")
+    @PostMapping("/regresar")
     public String volver() {
 
         return "redirect:/menu";
+    }
+
+    @PostMapping("/cancel")
+    public String cancelar(){
+
+        return "redirect:/listaServicios";
     }
 }

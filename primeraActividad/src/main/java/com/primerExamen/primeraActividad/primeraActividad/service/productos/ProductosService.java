@@ -8,9 +8,8 @@ public interface ProductosService {
 
     public List<Productos> recuperarListaProductos();
 
-    public void agregarProducto(Productos producto);
+    public void guardarProducto(Productos producto);
 
-    public void modificarProducto(Productos producto);
 
     public void eliminarProducto(Productos producto);
 

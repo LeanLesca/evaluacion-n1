@@ -16,22 +16,19 @@ public class ProductosServiceImpl implements ProductosService{
 
     @Override
     public List<Productos> recuperarListaProductos() {
-        return null;
+
+        return (List<Productos>) productosRepository.findAll();
     }
 
     @Override
-    public void agregarProducto(Productos producto) {
-
+    public void guardarProducto(Productos producto) {
+        productosRepository.save(producto);
     }
 
-    @Override
-    public void modificarProducto(Productos producto) {
-
-    }
 
     @Override
     public void eliminarProducto(Productos producto) {
-
+        productosRepository.delete(producto);
     }
 
     @Override
