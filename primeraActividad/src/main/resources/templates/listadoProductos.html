@@ -8,11 +8,11 @@
 <body>
 <h1 th:text="${tituloProducto}"> Título predeterminado </h1>
 <hr>
-<div class="container" th:if="${listaProductos != null and !listaProductos.empty}">
+<div class="container" >
     <div id="list-wrap">
         <h2 th:text="${tituloProducto}"></h2>
         <hr>
-        <div  class="items-body">
+        <div  class="items-body" th:if="${listaProductos != null and !listaProductos.empty}">
             <table class="styled-table" border = "1">
                 <thead>
                 <tr>
@@ -40,13 +40,14 @@
                 </tbody>
 
             </table>
-            <form th:action="@{/agregar}" method="post">
-                <button id="create_button" type="submit"  >agregar</button>
-            </form>
-            <form th:action="@{/volver}" method="post">
-                <button id="volver" type="submit"  >volver</button>
-            </form>
+
         </div>
+        <form th:action="@{/agregar}" method="post">
+            <button id="create_button" type="submit"  >agregar</button>
+        </form>
+        <form th:action="@{/volver}" method="post">
+            <button id="volver" type="submit"  >volver</button>
+        </form>
     </div>
 </div>
 
