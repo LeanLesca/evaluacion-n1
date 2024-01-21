@@ -12,6 +12,6 @@ public interface ServiciosService {
 
     public void eliminarServicio(Servicios producto);
 
-    public Servicios buscarServicio(int codigoServicio);
+    public Servicios buscarServicio(int idServicio);
 
 }

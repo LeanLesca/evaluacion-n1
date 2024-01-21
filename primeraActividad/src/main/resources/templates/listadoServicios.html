@@ -5,20 +5,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<h1 th:text="${tituloServicio}"> Título predeterminado </h1>
+<hr>
 <div class="container" th:if="${listaServicios != null and !listaServicios.empty}">
     <div class="items">
         <div class="items-head" >
-            <h1 th:text="${tituloServicio}"> Título predeterminado </h1>
-            <hr>
+
         </div>
         <div  class="items-body">
             <table class="styled-table" border = "1">
                 <thead>
                 <tr>
-                    <th>codigoServicio</th>
-                    <th>codigoEanServicio</th>
+                    <th>idServicio</th>
+                    <th>codigoEan</th>
                     <th>nombre</th>
+                    <th>descripcion</th>
                     <th>precio</th>
                     <th>duracion</th>
 
@@ -26,13 +27,14 @@
                 </thead>
                 <tbody>
                 <tr th:each="servicio: ${listaServicios} ">
-                    <td th:text="${servicio.codigoServicio}"> codigoServicio</td>
-                    <td th:text="${servicio.codigoEanServicio}"> codigoEanServicio</td>
+                    <td th:text="${servicio.getIdServicio}"> idServicio</td>
+                    <td th:text="${servicio.getCodigoEan}"> codigoEan</td>
                     <td th:text="${servicio.nombre}"> nombre</td>
+                    <td th:text="${servicio.descripcion}"> descripcion</td>
                     <td th:text="${servicio.precio}"> precio</td>
                     <td th:text="${servicio.duracion}"> duracion</td>
-                    <td><a th:href="@{/editarAgregarServicio/} + ${servicio.codigoServicio}" th:text = "editar">editar</a></td>
-                    <td><a th:href="@{/delete/} + ${servicio.codigoServicio}" th:text = "eliminar">eliminar</a></td>
+                    <td><a th:href="@{/editarAgregarServicio/} + ${servicio.idServicio}" th:text = "editar">editar</a></td>
+                    <td><a th:href="@{/delete/} + ${servicio.idServicio}" th:text = "eliminar">eliminar</a></td>
 
                 </tr>
                 </tbody>

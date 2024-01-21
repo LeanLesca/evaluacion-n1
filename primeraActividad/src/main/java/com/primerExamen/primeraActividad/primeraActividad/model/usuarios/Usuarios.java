@@ -1,8 +1,6 @@
 package com.primerExamen.primeraActividad.primeraActividad.model.usuarios;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,10 +10,13 @@ import java.io.Serializable;
 @Table(name = "usuarios")
 public class Usuarios implements Serializable {
 
+    private static final long serialVersionUID = 1l;
+
     @Id
-    private int nroUsuario;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idUsuario;
 
     private String nombre;
 
-    private String password;
+    private String passwordUsuario;
 }

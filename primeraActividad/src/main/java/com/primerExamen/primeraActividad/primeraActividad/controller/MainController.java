@@ -27,7 +27,7 @@ public class MainController {
         try{
             Usuarios user = usuarioService.getUsuarioByNombre(username);
             System.out.println(user);
-            if (user != null && user.getPassword().equals(password)) {
+            if (user != null && user.getPasswordUsuario().equals(password)) {
                 // Autenticación exitosa
                 return "redirect:/menu";
             } else {
@@ -61,9 +61,4 @@ public class MainController {
 
 
     }
-
-
-
-
-
 }

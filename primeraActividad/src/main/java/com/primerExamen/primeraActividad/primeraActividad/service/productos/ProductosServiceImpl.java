@@ -32,8 +32,8 @@ public class ProductosServiceImpl implements ProductosService{
     }
 
     @Override
-    public Productos buscarProducto(int codigoProducto) {
-        return productosRepository.findByCodigoProducto(codigoProducto);
+    public Productos buscarProducto(int idProducto) {
+        return productosRepository.findByIdProducto(idProducto);
     }
 
 

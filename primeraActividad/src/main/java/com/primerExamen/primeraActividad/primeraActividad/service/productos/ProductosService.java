@@ -13,5 +13,5 @@ public interface ProductosService {
 
     public void eliminarProducto(Productos producto);
 
-    public Productos buscarProducto(int codigoProducto);
+    public Productos buscarProducto(int idProducto);
 }

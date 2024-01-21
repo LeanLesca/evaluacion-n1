@@ -1,14 +1,13 @@
 package com.primerExamen.primeraActividad.primeraActividad.controller;
 
-import com.primerExamen.primeraActividad.primeraActividad.model.productos.Productos;
 import com.primerExamen.primeraActividad.primeraActividad.model.servicios.Servicios;
 import com.primerExamen.primeraActividad.primeraActividad.service.servicios.ServiciosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ServiciosController {
@@ -18,12 +17,14 @@ public class ServiciosController {
 
     private boolean isNuevo = false;
 
-
+    @Value("${tituloServicios}")
+    private String tituloServicio;
 
     @GetMapping("/listaServicios")
     public String listaProductos(Model model) {
 
         var listaServicios = serviciosService.recuperarListaServicios();
+        model.addAttribute("tituloServicio", tituloServicio);
         model.addAttribute("listaServicios", listaServicios);
 
         return "listadoServicios";
@@ -44,9 +45,9 @@ public class ServiciosController {
         return "editarAgregarServicio";
     }
 
-    @GetMapping("/editarAgregarServicio/{codigoServicio}")
+    @GetMapping("/editarAgregarServicio/{idServicio}")
     public String editarServicio(Servicios servicio, Model model){
-        Servicios servicio1 = serviciosService.buscarServicio(servicio.getCodigoServicio());
+        Servicios servicio1 = serviciosService.buscarServicio(servicio.getIdServicio());
 
         model.addAttribute("servicio",servicio1);
 
@@ -60,10 +61,10 @@ public class ServiciosController {
         return "redirect:/listaServicios";
     }
 
-    @GetMapping("/delete/{codigoServicio}")
+    @GetMapping("/delete/{idServicio}")
     public String eliminarProducto(Servicios servicio,Model model) {
 
-        Servicios servicioEliminar = serviciosService.buscarServicio(servicio.getCodigoServicio());
+        Servicios servicioEliminar = serviciosService.buscarServicio(servicio.getIdServicio());
         serviciosService.eliminarServicio(servicioEliminar);
 
         return "redirect:/listaServicios";

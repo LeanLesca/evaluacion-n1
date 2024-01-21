@@ -1,9 +1,7 @@
 package com.primerExamen.primeraActividad.primeraActividad.model.servicios;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,12 +11,17 @@ import java.io.Serializable;
 @Table(name = "servicios")
 public class Servicios implements Serializable {
 
-    @Id
-    private int codigoServicio;
+    private static final long serialVersionUID = 1l;
 
-    private int codigoEanServicio;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idServicio;
+
+    private int codigoEan;
 
     private String nombre;
+
+    private String descripcion;
 
     private int precio;
 

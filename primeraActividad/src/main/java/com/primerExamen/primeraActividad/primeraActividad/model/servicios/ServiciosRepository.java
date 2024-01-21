@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ServiciosRepository extends CrudRepository<Servicios,Integer> {
 
-    public Servicios findByCodigoServicio(int codigoServicio);
+    public Servicios findByIdServicio(int idServicio);
 
 }

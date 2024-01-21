@@ -30,8 +30,8 @@ public class ServiciosServiceImpl implements ServiciosService{
     }
 
     @Override
-    public Servicios buscarServicio(int codigoServicio) {
-        return serviciosRepository.findByCodigoServicio(codigoServicio);
+    public Servicios buscarServicio(int idServicio) {
+        return serviciosRepository.findByIdServicio(idServicio);
 
     }
 

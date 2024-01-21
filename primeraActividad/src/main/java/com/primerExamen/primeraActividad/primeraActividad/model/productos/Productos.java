@@ -1,8 +1,6 @@
 package com.primerExamen.primeraActividad.primeraActividad.model.productos;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,10 +10,13 @@ import java.io.Serializable;
 @Table(name = "productos")
 public class Productos implements Serializable {
 
-    @Id
-    private int codigoProducto;
+    private static final long serialVersionUID = 1l;
 
-    private int codigoEanProducto;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idProducto;
+
+    private int codigoEan;
 
     private String nombre;
 

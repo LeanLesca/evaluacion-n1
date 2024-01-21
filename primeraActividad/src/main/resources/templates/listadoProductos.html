@@ -5,19 +5,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<h1 th:text="${tituloProducto}"> Título predeterminado </h1>
+<hr>
 
 <div class="container" th:if="${listaProductos != null and !listaProductos.empty}">
     <div class="items">
         <div class="items-head" >
-            <h1 th:text="${tituloProducto}"> Título predeterminado </h1>
-            <hr>
+
         </div>
         <div  class="items-body">
             <table class="styled-table" border = "1">
                 <thead>
                 <tr>
-                    <th>codigoProducto</th>
-                    <th>codigoEanProducto</th>
+                    <th>idProducto</th>
+                    <th>codigoEan</th>
                     <th>nombre</th>
                     <th>descripcion</th>
                     <th>precio</th>
@@ -25,15 +26,16 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <tr th:each="producto: ${listaProductos} ">
-                    <td th:text="${producto.codigoProducto}"> codigoProducto</td>
-                    <td th:text="${producto.codigoEanProducto}"> codigoEanProducto</td>
+                    <td th:text="${producto.getIdProducto}"> idProducto</td>
+                    <td th:text="${producto.getCodigoEan}"> codigoEan</td>
                     <td th:text="${producto.nombre}"> nombre</td>
                     <td th:text="${producto.descripcion}"> descripcion</td>
                     <td th:text="${producto.precio}"> precio</td>
                     <td th:text="${producto.stock}"> stocks</td>
-                    <td><a th:href="@{/editarAgregarProducto/} + ${producto.codigoProducto}" th:text = "editar">editar</a></td>
-                    <td><a th:href="@{/eliminar/} + ${producto.codigoProducto}" th:text = "eliminar">eliminar</a></td>
+                    <td><a th:href="@{/editarAgregarProducto/} + ${producto.idProducto}" th:text = "editar">editar</a></td>
+                    <td><a th:href="@{/eliminar/} + ${producto.idProducto}" th:text = "eliminar">eliminar</a></td>
 
                 </tr>
                 </tbody>
