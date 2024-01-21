@@ -18,7 +18,6 @@ public class ServiciosController {
 
     private boolean isNuevo = false;
 
-    private int codigoServ = -1;
 
 
     @GetMapping("/listaServicios")
@@ -32,40 +31,42 @@ public class ServiciosController {
 
     @PostMapping("/nuevo")
     public String irEditarAgregarServicio(Model model) {
-        codigoServ = -1;
+
         return "redirect:/editarAgregarServicio";
     }
 
     @GetMapping("/editarAgregarServicio")
-    public String editarAgregarServicio(Model model) {
-        int codigoServicio = codigoServ;
-        Servicios servicio;
-        if (codigoServicio == -1) {
-             servicio = new Servicios();
-            isNuevo = true;
-        } else {
-            servicio = serviciosService.buscarServicio(codigoServicio);
-            isNuevo = false;
-        }
+    public String AgregarServicio(Model model) {
+
+        Servicios servicio = new Servicios();
         model.addAttribute("servicio",servicio);
 
         return "editarAgregarServicio";
     }
 
+    @GetMapping("/editarAgregarServicio/{codigoServicio}")
+    public String editarServicio(Servicios servicio, Model model){
+        Servicios servicio1 = serviciosService.buscarServicio(servicio.getCodigoServicio());
+
+        model.addAttribute("servicio",servicio1);
+
+        return "editarAgregarServicio";
+    }
+
     @PostMapping("/guardarCambios")
-    public String guardarCambios(@RequestParam Servicios servicio) {
+    public String guardarCambios(Servicios servicio) {
             serviciosService.guardarServicio(servicio);
 
         return "redirect:/listaServicios";
     }
 
-    @PostMapping("/delete")
-    public String eliminarProducto(Model model, @RequestParam int codigoServicio) {
+    @GetMapping("/delete/{codigoServicio}")
+    public String eliminarProducto(Servicios servicio,Model model) {
 
-        Servicios servicioEliminar = serviciosService.buscarServicio(codigoServicio);
+        Servicios servicioEliminar = serviciosService.buscarServicio(servicio.getCodigoServicio());
         serviciosService.eliminarServicio(servicioEliminar);
 
-        return "listadoServicios";
+        return "redirect:/listaServicios";
     }
 
     @PostMapping("/regresar")

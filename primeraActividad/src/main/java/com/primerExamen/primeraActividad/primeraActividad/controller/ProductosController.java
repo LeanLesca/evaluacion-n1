@@ -18,8 +18,6 @@ public class ProductosController {
 
     private boolean isNuevo = false;
 
-    private int codigoProd = -1;
-
     @GetMapping("/listaProductos")
     public String listaProductos(Model model){
 
@@ -29,43 +27,41 @@ public class ProductosController {
         return "listadoProductos";
     }
 
-    @PostMapping("/agregar")
-    public String irEditarAgregarProducto(Model model ){
-        codigoProd = -1;
-        return "redirect:/editarAgregarProducto";
-    }
-
     @GetMapping("/editarAgregarProducto")
-    public String editarAgregarProducto(Model model){
-        int codigoProducto = codigoProd;
-        Productos producto;
-        if(codigoProducto == -1){
-             producto = new Productos();
-            isNuevo = true;
-        }else{
-             producto = productosService.buscarProducto(codigoProducto);
-            isNuevo = false;
-        }
+    public String AgregarProducto(Model model){
+        Productos producto = new Productos();
+
         model.addAttribute("producto",producto);
         return "editarAgregarProducto";
     }
 
+    @PostMapping("/agregar")
+    public String irEditarAgregarProducto(Model model) {
+        return "redirect:/editarAgregarProducto";
+    }
+
+    @GetMapping("/editarAgregarProducto/{codigoProducto}")
+    public String editarProducto(Productos producto, Model model){
+        Productos producto1 = productosService.buscarProducto(producto.getCodigoProducto());
+        model.addAttribute("producto",producto1);
+        return "editarAgregarProducto";
+    }
+
+
     @PostMapping("/editarAgregarProducto")
-    public String guardarCambios(@RequestParam Productos producto){
-        System.out.println("pase por aca");
+    public String guardarCambios(Productos producto){
 
         productosService.guardarProducto(producto);
 
         return "redirect:/listaProductos";
     }
 
-    @PostMapping("/eliminar")
-    public String eliminarProducto(Model model, @RequestParam int codigoProducto){
-
-        Productos productoEliminar = productosService.buscarProducto(codigoProducto);
+    @GetMapping("/eliminar/{codigoProducto}")
+    public String eliminarProducto(Productos producto, Model model){
+        Productos productoEliminar = productosService.buscarProducto(producto.getCodigoProducto());
         productosService.eliminarProducto(productoEliminar);
 
-        return "listadoProductos";
+        return "redirect:/listaProductos";
     }
     @PostMapping("/volver")
     public String volver(){
