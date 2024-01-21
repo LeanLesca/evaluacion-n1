@@ -7,10 +7,10 @@
 <body>
 <h1>servicio</h1>
 <form th:action="@{/guardarCambios}" method = "post" th:object="${servicio}">
-    <label >codigoProducto:</label>
+    <label >codigoServicio:</label>
     <input type="text" name="codigoServicio" th:field="*{codigoServicio}"/>
     <br/>
-    <label >codigoEanProducto:</label>
+    <label >codigoEanServicio:</label>
     <input type="text" name="codigoEanServicio" th:field="*{codigoEanServicio}"/>
     <br/>
     <label >nombre:</label>
@@ -19,7 +19,7 @@
     <label >precio:</label>
     <input type="text" name="precio" th:field="*{precio}"/>
     <br/>
-    <label >stock:</label>
+    <label >duracion:</label>
     <input type="text" name="stock" th:field="*{duracion}"/>
     <br/>
     <input type="submit" name="guardar" value="Guardar"/>
